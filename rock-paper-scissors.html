@@ -1,24 +1,31 @@
 <!doctype html>
 <html>
 <script>
-    function playRound(playerSelection, computerSelection) {
-
-
-if(playerSelection == 'rock' && computerSelection == 'paper') {
- return "You Lose! " + computerSelection + " beats " + playerSelection;
-}else if(playerSelection == 'paper' && computerSelection == 'scissors') { 
- return "You Lose! " + computerSelection + " beats " + playerSelection;}else if(playerSelection == 'scissors' && computerSelection == 'rock') { 
- return "You Lose! " + computerSelection + " beats " + playerSelection;}else if(playerSelection == 'rock' && computerSelection == 'scissors') { 
- return "You Win! " + playerSelection + " beats " + computerSelection;}else if(playerSelection == 'paper' && computerSelection == 'rock') { 
- return "You Win! " + playerSelection + " beats " + computerSelection;}else if(playerSelection == 'scissors' && computerSelection == 'paper') { 
- return "You Win! " + playerSelection + " beats " + computerSelection;}else if(playerSelection == 'rock' && computerSelection == 'rock') { 
- return "You Tie! " + playerSelection + " does not beat " + computerSelection;}else if(playerSelection == 'paper' && computerSelection == 'paper') { 
- return "You Tie! " + playerSelection + " does not beat " + computerSelection;}else if(playerSelection == 'scissors' && computerSelection == 'scissors') { 
- return "You Tie! " + playerSelection + " does not beat " + computerSelection;}else{return "That's not an option. Please choose rock, paper, or scissors";}
-
-
+function computerPlay(number) {
+var roshamboGenerator = Math.floor(Math.random()*3)
+if(roshamboGenerator == 2){return "rock";}else if(roshamboGenerator == 1){return "paper";}else{return "scissors"}
 }
+computerPlay();
 
+function playRound(playerSelection, computerSelection) {
+
+var removeCapitals= playerSelection.toLowerCase();
+var modifiedPlayerSelection = removeCapitals;
+
+if(modifiedPlayerSelection == 'rock' && computerSelection == 'paper') {
+ return "You Lose! " + computerSelection + " beats " + modifiedPlayerSelection;
+}else if(modifiedPlayerSelection == 'paper' && computerSelection == 'scissors') { 
+ return "You Lose! " + computerSelection + " beats " + modifiedPlayerSelection;}else if(modifiedPlayerSelection == 'scissors' && computerSelection == 'rock') { 
+ return "You Lose! " + computerSelection + " beats " + modifiedPlayerSelection;}else if(modifiedPlayerSelection == 'rock' && computerSelection == 'scissors') { 
+ return "You Win! " + modifiedPlayerSelection + " beats " + computerSelection;}else if(modifiedPlayerSelection == 'paper' && computerSelection == 'rock') { 
+ return "You Win! " + modifiedPlayerSelection + " beats " + computerSelection;}else if(playerSelection == 'scissors' && computerSelection == 'paper') { 
+ return "You Win! " + modifiedPlayerSelection + " beats " + computerSelection;}else if(playerSelection == 'rock' && computerSelection == 'rock') { 
+ return "You Tie! " + modifiedPlayerSelection + " does not beat " + computerSelection;}else if(modifiedPlayerSelection == 'paper' && computerSelection == 'paper') { 
+ return "You Tie! " + modifiedPlayerSelection + " does not beat " + computerSelection;}else if(modifiedPlayerSelection == 'scissors' && computerSelection == 'scissors') { 
+ return "You Tie! " + modifiedPlayerSelection + " does not beat " + computerSelection;}else{return "That's not an option. Please choose rock, paper, or scissors";}
+} 
+
+playRound('RoCK', 'paper');
 playRound('ROCK','paper')
 </script>
 </html>
