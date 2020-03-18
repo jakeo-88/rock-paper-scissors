@@ -5,7 +5,7 @@ function computerPlay(number) {
 var roshamboGenerator = Math.floor(Math.random()*3)
 if(roshamboGenerator == 2){return "rock";}else if(roshamboGenerator == 1){return "paper";}else{return "scissors"}
 }
-computerPlay();
+var computerSelection = computerPlay();
 
 function playRound(playerSelection, computerSelection) {
 
@@ -25,7 +25,6 @@ if(modifiedPlayerSelection == 'rock' && computerSelection == 'paper') {
  return "You Tie! " + modifiedPlayerSelection + " does not beat " + computerSelection;}else{return "That's not an option. Please choose rock, paper, or scissors";}
 } 
 
-playRound('RoCK', 'paper');
-playRound('ROCK','paper')
+playRound('PAPER', computerSelection);
 </script>
 </html>
