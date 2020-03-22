@@ -1,4 +1,19 @@
 function game() {
+    function scoreBoard() {
+
+
+        if (playerScore < 5 && computerScore < 5) {
+        
+        return "The current score is: Player: " + playerScore + ", Computer: " + computerScore + ".";
+        } else {return "That's game! The final score is: Player: " + playerScore + ", Computer: " + computerScore + ".";
+        }
+        }
+        
+        var playerScore = 0;
+        var computerScore = 5;
+        
+        scoreBoard();
+
 
     alert("Let's play a game! Best of 5 rounds for Rock, Paper, Scissors is the winner.");
     alert(playRound(playerSelection, computerSelection));
