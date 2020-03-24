@@ -6,9 +6,19 @@ function game() {
 
 
     function scoreBoard() {
+        function endGameDeclaration() {
+    if (playerScore > computerScore) {
+    alert("Player Wins!");
+        }else if(computerScore > playerScore) {
+        alert("Computer Wins!");
+        }else{
+        alert("It's a Tie!");
+        }
+    }
+
     if (roundNumberCounter <= 5) {        
     alert("Round Number " + roundNumberCounter + ". The current score is: Player: " + playerScore + ", Computer: " + computerScore + ".");
-    } else {alert("That's game! The final score is: Player: " + playerScore + ", Computer: "+ computerScore + ".");
+    } else {alert("That's game! The final score is: Player: " + playerScore + ", Computer: "+ computerScore + "."); endGameDeclaration();
     }
     }
     
@@ -69,6 +79,7 @@ scoreBoard();
 addRound();
 console.log(playRound());
 scoreBoard();
+
 
 }
 game();
