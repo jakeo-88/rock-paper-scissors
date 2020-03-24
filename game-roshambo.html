@@ -16,19 +16,19 @@ function game() {
     return roundNumberCounter += 1;
     }
     
+    function addPlayerScore(){
+    return playerScore += 1;
+    }
+    
+    function addComputerScore(){
+    return computerScore += 1;
+    }       
 
 
 
 function playRound(playerSelection, computerSelection) {
 
-    function playerScore(){
-    return roundNumberCounter += 1;
-    }
     
-    function computerScore(){
-    return roundNumberCounter += 1;
-    }       
-
 var playerSelection = prompt("Please choose: Rock, Paper, or Scissors");
 var computerSelection = computerPlay();
 
@@ -40,13 +40,13 @@ if(roshamboGenerator == 2){return "rock";}else if(roshamboGenerator == 1){return
 var removeCapitals= playerSelection.toLowerCase();
 var modifiedPlayerSelection = removeCapitals;
 
-if(modifiedPlayerSelection == 'rock' && computerSelection == 'paper') {
+if(modifiedPlayerSelection == 'rock' && computerSelection == 'paper') {addComputerScore();
 return "You Lose! Paper beats Rock"; 
-}else if(modifiedPlayerSelection == 'paper' && computerSelection == 'scissors') { 
- return "You Lose! Paper beats Scissors";}else if(modifiedPlayerSelection == 'scissors' && computerSelection == 'rock') { 
- return "You Lose! Rock beats Scissors";}else if(modifiedPlayerSelection == 'rock' && computerSelection == 'scissors') { 
- return "You Win! Rock beats Scissors";}else if(modifiedPlayerSelection == 'paper' && computerSelection == 'rock') { 
- return "You Win! Paper beats Rock";}else if(modifiedPlayerSelection == 'scissors' && computerSelection == 'paper') { 
+}else if(modifiedPlayerSelection == 'paper' && computerSelection == 'scissors') {addComputerScore(); 
+ return "You Lose! Paper beats Scissors";}else if(modifiedPlayerSelection == 'scissors' && computerSelection == 'rock') {addComputerScore(); 
+ return "You Lose! Rock beats Scissors";}else if(modifiedPlayerSelection == 'rock' && computerSelection == 'scissors') {addPlayerScore(); 
+ return "You Win! Rock beats Scissors";}else if(modifiedPlayerSelection == 'paper' && computerSelection == 'rock') {addPlayerScore(); 
+ return "You Win! Paper beats Rock";}else if(modifiedPlayerSelection == 'scissors' && computerSelection == 'paper') {addPlayerScore(); 
  return "You Win! Scissors beats Paper";}else if(modifiedPlayerSelection == 'rock' && computerSelection == 'rock') { 
  return "You Tie! Rock does not beat Rock";}else if(modifiedPlayerSelection == 'paper' && computerSelection == 'paper') { 
  return "You Tie! Paper does not beat Paper";}else if(modifiedPlayerSelection == 'scissors' && computerSelection == 'scissors') { 
@@ -55,19 +55,19 @@ return "You Lose! Paper beats Rock";
 alert("Let's play a game! Best of 5 rounds for Rock, Paper, Scissors is the winner.");
 scoreBoard();
 addRound();
-alert(playRound());
+console.log(playRound());
 scoreBoard();
 addRound();
-alert(playRound());
+console.log(playRound());
 scoreBoard();
 addRound();
-alert(playRound());
+console.log(playRound());
 scoreBoard();
 addRound();
-alert(playRound());
+console.log(playRound());
 scoreBoard();
 addRound();
-alert(playRound());
+console.log(playRound());
 scoreBoard();
 
 }
