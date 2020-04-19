@@ -6,20 +6,26 @@
 </head>
 <body>
   <script>
+    var body = document.getElementsByTagName("BODY")[0];
+    var rockBtn = document.createElement('button');
+    var paperBtn = document.createElement('button');
+    var scissorsBtn = document.createElement('button');
+    
+    
     function game() {
         var roundNumberCounter = 1;         
         var playerScore = 0;
         var computerScore = 0;        
         function scoreBoard() {
             function endGameDeclaration() {
-            if (playerScore > computerScore) {
-                alert("Player Wins!");
-            }else if(computerScore > playerScore) {
-                alert("Computer Wins!");
-            }else{
-                alert("It's a Tie!");
+                if (playerScore > computerScore) {
+                    alert("Player Wins!");
+                }else if(computerScore > playerScore) {
+                    alert("Computer Wins!");
+                }else{
+                    alert("It's a Tie!");
+                }
             }
-        }
         if (roundNumberCounter <= 5) {        
             alert("Round Number " + roundNumberCounter + ". The current score is: Player: " + playerScore + ", Computer: " + computerScore + ".");
         }else {alert("That's game! The final score is: Player: " + playerScore + ", Computer: "+ computerScore + "."); 
@@ -76,24 +82,7 @@
             return "You Tie! Scissors does not beat Scissors"; 
         }else{return "That's not an option. Please choose rock, paper, or scissors";}
     }
-    alert("Let's play a game! Best of 5 rounds for Rock, Paper, Scissors is the winner.");
-    scoreBoard();
-    addRound();
-    console.log(playRound());
-    scoreBoard();
-    addRound();
-    console.log(playRound());
-    scoreBoard();
-    addRound();
-    console.log(playRound());
-    scoreBoard();
-    addRound();
-    console.log(playRound());
-    scoreBoard();
-    addRound();
-    console.log(playRound());
-    scoreBoard();
-    }
+}
 game();
   </script>
 </body>
