@@ -9,6 +9,7 @@
     <button value = "rock">Rock</button>
     <button value = "paper">Paper</button>
     <button value = "scissors">Scissors</button>
+    <div id = "result"></div>
   <script>
     function playRound(playerSelection, computerSelection) {
         var playerSelection;
@@ -23,25 +24,25 @@
                 return "scissors"
             }
         }
-         if(playerSelection == 'rock' && computerSelection == 'paper') {
-            console.log("You Lose! Paper beats Rock"); 
+        if(playerSelection == 'rock' && computerSelection == 'paper') {
+            document.getElementById("result").innerHTML = "You Lose! Paper beats Rock"; 
         }else if(playerSelection == 'paper' && computerSelection == 'scissors') {
-            console.log("You Lose! Paper beats Scissors");
+            document.getElementById("result").innerHTML = "You Lose! Paper beats Scissors";
         }else if(playerSelection == 'scissors' && computerSelection == 'rock') {
-            console.log("You Lose! Rock beats Scissors");
+            document.getElementById("result").innerHTML = "You Lose! Rock beats Scissors";
         }else if(playerSelection == 'rock' && computerSelection == 'scissors') {
-            console.log("You Win! Rock beats Scissors");
+            document.getElementById("result").innerHTML = "You Win! Rock beats Scissors";
         }else if(playerSelection == 'paper' && computerSelection == 'rock') {
-            console.log("You Win! Paper beats Rock");
+            document.getElementById("result").innerHTML = "You Win! Paper beats Rock";
         }else if(playerSelection == 'scissors' && computerSelection == 'paper') {
-            console.log("You Win! Scissors beats Paper");
+            document.getElementById("result").innerHTML = "You Win! Scissors beats Paper";
         }else if(playerSelection == 'rock' && computerSelection == 'rock') { 
-            console.log("You Tie! Rock does not beat Rock");
+            document.getElementById("result").innerHTML = "You Tie! Rock does not beat Rock";
         }else if(playerSelection == 'paper' && computerSelection == 'paper') { 
-            console.log("You Tie! Paper does not beat Paper");
+            document.getElementById("result").innerHTML = "You Tie! Paper does not beat Paper";
         }else if(playerSelection == 'scissors' && computerSelection == 'scissors') { 
-            console.log("You Tie! Scissors does not beat Scissors"); 
-        }else{console.log("That's not an option. Please choose rock, paper, or scissors");}
+            document.getElementById("result").innerHTML = "You Tie! Scissors does not beat Scissors"; 
+        }else{document.getElementById("result").innerHTML = "That's not an option. Please choose rock, paper, or scissors";}
     }
     var buttons = document.querySelectorAll('BUTTON');   
     buttons.forEach((button) => {
