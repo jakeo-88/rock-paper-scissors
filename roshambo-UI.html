@@ -1,47 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Page Title</title>
+  <title>Roshambo</title>
   <meta charset="UTF-8"/>
 </head>
 <body>
-    <button id="btn">Rock</button>
-    <button id="btn">Paper</button>
-    <button id="btn">Scissors</button>
+    <h1>Please Select</h1>
+    <button value = "rock">Rock</button>
+    <button value = "paper">Paper</button>
+    <button value = "scissors">Scissors</button>
   <script>
-
-    
-    function game() {
-        var roundNumberCounter = 1;         
-        var playerScore = 0;
-        var computerScore = 0;        
-        function scoreBoard() {
-            function endGameDeclaration() {
-                if (playerScore > computerScore) {
-                    alert("Player Wins!");
-                }else if(computerScore > playerScore) {
-                    alert("Computer Wins!");
-                }else{
-                    alert("It's a Tie!");
-                }
-            }
-        if (roundNumberCounter <= 5) {        
-            alert("Round Number " + roundNumberCounter + ". The current score is: Player: " + playerScore + ", Computer: " + computerScore + ".");
-        }else {alert("That's game! The final score is: Player: " + playerScore + ", Computer: "+ computerScore + "."); 
-            endGameDeclaration();
-        }
-    }
-    function addRound(){
-        return roundNumberCounter += 1;
-    }
-    function addPlayerScore(){
-        return playerScore += 1;
-    }
-    function addComputerScore(){
-        return computerScore += 1;
-    }       
     function playRound(playerSelection, computerSelection) {
-        var playerSelection = prompt("Please choose: Rock, Paper, or Scissors");
+        var playerSelection;
         var computerSelection = computerPlay();
         function computerPlay() {
             var roshamboGenerator = Math.floor(Math.random()*3)
@@ -53,36 +23,32 @@
                 return "scissors"
             }
         }
-        var removeCapitals= playerSelection.toLowerCase();
-        var modifiedPlayerSelection = removeCapitals;
-        if(modifiedPlayerSelection == 'rock' && computerSelection == 'paper') {
-            addComputerScore();
-            return "You Lose! Paper beats Rock"; 
-        }else if(modifiedPlayerSelection == 'paper' && computerSelection == 'scissors') {
-            addComputerScore(); 
-            return "You Lose! Paper beats Scissors";
-        }else if(modifiedPlayerSelection == 'scissors' && computerSelection == 'rock') {
-            addComputerScore(); 
-            return "You Lose! Rock beats Scissors";
-        }else if(modifiedPlayerSelection == 'rock' && computerSelection == 'scissors') {
-            addPlayerScore(); 
-            return "You Win! Rock beats Scissors";
-        }else if(modifiedPlayerSelection == 'paper' && computerSelection == 'rock') {
-            addPlayerScore(); 
-            return "You Win! Paper beats Rock";
-        }else if(modifiedPlayerSelection == 'scissors' && computerSelection == 'paper') {
-            addPlayerScore(); 
-            return "You Win! Scissors beats Paper";
-        }else if(modifiedPlayerSelection == 'rock' && computerSelection == 'rock') { 
-            return "You Tie! Rock does not beat Rock";
-        }else if(modifiedPlayerSelection == 'paper' && computerSelection == 'paper') { 
-            return "You Tie! Paper does not beat Paper";
-        }else if(modifiedPlayerSelection == 'scissors' && computerSelection == 'scissors') { 
-            return "You Tie! Scissors does not beat Scissors"; 
-        }else{return "That's not an option. Please choose rock, paper, or scissors";}
+         if(playerSelection == 'rock' && computerSelection == 'paper') {
+            console.log("You Lose! Paper beats Rock"); 
+        }else if(playerSelection == 'paper' && computerSelection == 'scissors') {
+            console.log("You Lose! Paper beats Scissors");
+        }else if(playerSelection == 'scissors' && computerSelection == 'rock') {
+            console.log("You Lose! Rock beats Scissors");
+        }else if(playerSelection == 'rock' && computerSelection == 'scissors') {
+            console.log("You Win! Rock beats Scissors");
+        }else if(playerSelection == 'paper' && computerSelection == 'rock') {
+            console.log("You Win! Paper beats Rock");
+        }else if(playerSelection == 'scissors' && computerSelection == 'paper') {
+            console.log("You Win! Scissors beats Paper");
+        }else if(playerSelection == 'rock' && computerSelection == 'rock') { 
+            console.log("You Tie! Rock does not beat Rock");
+        }else if(playerSelection == 'paper' && computerSelection == 'paper') { 
+            console.log("You Tie! Paper does not beat Paper");
+        }else if(playerSelection == 'scissors' && computerSelection == 'scissors') { 
+            console.log("You Tie! Scissors does not beat Scissors"); 
+        }else{console.log("That's not an option. Please choose rock, paper, or scissors");}
     }
-}
-game();
+    var buttons = document.querySelectorAll('BUTTON');   
+    buttons.forEach((button) => {
+        button.addEventListener('click', (e) => {
+            playRound(button.value);
+        });
+    });
   </script>
 </body>
 </html>
