@@ -9,47 +9,98 @@
     <button value = "rock">Rock</button>
     <button value = "paper">Paper</button>
     <button value = "scissors">Scissors</button>
+    <div id = "rules"></div>
     <div id = "result"></div>
+    <div id = "score"></div>
+    <div id = "endGame"></div>  
   <script>
-    function playRound(playerSelection, computerSelection) {
-        var playerSelection;
-        var computerSelection = computerPlay();
-        function computerPlay() {
-            var roshamboGenerator = Math.floor(Math.random()*3)
-            if(roshamboGenerator == 2){
-                return "rock";
-            }else if(roshamboGenerator == 1){
-                return "paper";
-            }else{
-                return "scissors"
-            }
-        }
-        if(playerSelection == 'rock' && computerSelection == 'paper') {
-            document.getElementById("result").innerHTML = "You Lose! Paper beats Rock"; 
-        }else if(playerSelection == 'paper' && computerSelection == 'scissors') {
-            document.getElementById("result").innerHTML = "You Lose! Paper beats Scissors";
-        }else if(playerSelection == 'scissors' && computerSelection == 'rock') {
-            document.getElementById("result").innerHTML = "You Lose! Rock beats Scissors";
-        }else if(playerSelection == 'rock' && computerSelection == 'scissors') {
-            document.getElementById("result").innerHTML = "You Win! Rock beats Scissors";
-        }else if(playerSelection == 'paper' && computerSelection == 'rock') {
-            document.getElementById("result").innerHTML = "You Win! Paper beats Rock";
-        }else if(playerSelection == 'scissors' && computerSelection == 'paper') {
-            document.getElementById("result").innerHTML = "You Win! Scissors beats Paper";
-        }else if(playerSelection == 'rock' && computerSelection == 'rock') { 
-            document.getElementById("result").innerHTML = "You Tie! Rock does not beat Rock";
-        }else if(playerSelection == 'paper' && computerSelection == 'paper') { 
-            document.getElementById("result").innerHTML = "You Tie! Paper does not beat Paper";
-        }else if(playerSelection == 'scissors' && computerSelection == 'scissors') { 
-            document.getElementById("result").innerHTML = "You Tie! Scissors does not beat Scissors"; 
-        }else{document.getElementById("result").innerHTML = "That's not an option. Please choose rock, paper, or scissors";}
+var roundNumberCounter = 1;         
+var playerScore = 0;
+var computerScore = 0;        
+document.getElementById("rules").innerHTML = "Let's play a game! Best of 5 rounds for Rock, Paper, Scissors is the winner.";
+
+function scoreBoard() {
+  if (roundNumberCounter <= 5) {        
+    document.getElementById("score").innerHTML = "Round Number " + roundNumberCounter + ". The current score is: Player: " + playerScore + ", Computer: " + computerScore + ".";
+    } else {document.getElementById("score").innerHTML = "That's game! The final score is: Player: " + playerScore + ", Computer: "+ computerScore + "."; 
     }
-    var buttons = document.querySelectorAll('BUTTON');   
-    buttons.forEach((button) => {
-        button.addEventListener('click', (e) => {
-            playRound(button.value);
-        });
-    });
+  }
+  
+  
+function addRound(){
+  return roundNumberCounter += 1;
+}
+function addPlayerScore(){
+  return playerScore += 1;
+}
+function addComputerScore(){
+  return computerScore += 1;
+}        
+function playRound(playerSelection, computerSelection) {
+  var playerSelection;
+  var computerSelection = computerPlay();
+  function computerPlay() {
+    var roshamboGenerator = Math.floor(Math.random()*3)
+      if(roshamboGenerator == 2){
+        return "rock";
+      }else if(roshamboGenerator == 1){
+        return "paper";
+      }else{
+        return "scissors"
+      }
+  }
+  if(playerSelection == 'rock' && computerSelection == 'paper') {
+    addRound();
+    addComputerScore();
+    document.getElementById("result").innerHTML = "You Lose! Paper beats Rock"; 
+  }else if(playerSelection == 'paper' && computerSelection == 'scissors') {
+    addRound();
+    addComputerScore();
+    document.getElementById("result").innerHTML = "You Lose! Paper beats Scissors";
+  }else if(playerSelection == 'scissors' && computerSelection == 'rock') {
+    addRound();
+    addComputerScore();
+    document.getElementById("result").innerHTML = "You Lose! Rock beats Scissors";
+  }else if(playerSelection == 'rock' && computerSelection == 'scissors') {
+    addRound();
+    addPlayerScore();
+    document.getElementById("result").innerHTML = "You Win! Rock beats Scissors";
+  }else if(playerSelection == 'paper' && computerSelection == 'rock') {
+    addRound();
+    addPlayerScore();
+    document.getElementById("result").innerHTML = "You Win! Paper beats Rock";
+  }else if(playerSelection == 'scissors' && computerSelection == 'paper') {
+    addRound();
+    addPlayerScore();
+    document.getElementById("result").innerHTML = "You Win! Scissors beats Paper";
+  }else if(playerSelection == 'rock' && computerSelection == 'rock') { 
+    addRound();
+    document.getElementById("result").innerHTML = "You Tie! Rock does not beat Rock";
+  }else if(playerSelection == 'paper' && computerSelection == 'paper') { 
+    addRound();
+    document.getElementById("result").innerHTML = "You Tie! Paper does not beat Paper";
+  }else if(playerSelection == 'scissors' && computerSelection == 'scissors') { 
+    addRound();
+    document.getElementById("result").innerHTML = "You Tie! Scissors does not beat Scissors"; 
+  }else{addRound(); document.getElementById("result").innerHTML = "That's not an option. Please choose rock, paper, or scissors";}
+}
+function endGameDeclaration() {
+  if (roundNumberCounter == 5 && playerScore > computerScore) {
+    document.getElementById("endGame").innerHTML = "Player Wins!";
+  }else if(roundNumberCounter == 5 && computerScore > playerScore) {
+    document.getElementById("endGame").innerHTML = "Computer Wins!";
+  }else if(roundNumberCounter == 5 && computerScore == playerScore){
+    document.getElementById("endGame").innerHTML = "It's a Tie!";
+  }else{document.getElementById("endGame").innerHTML = "";}
+}
+var buttons = document.querySelectorAll('BUTTON');   
+buttons.forEach((button) => {
+  button.addEventListener('click', (e) => {
+    playRound(button.value);
+    scoreBoard();
+    endGameDeclaration();
+  });
+});
   </script>
 </body>
 </html>
